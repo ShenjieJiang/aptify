@@ -118,35 +118,43 @@
 - **Technical Notes**: Integrate with email/SMS APIs; apply NLP pipelines for topic detection, summarisation, and entity extraction; retain correspondence and classifications linked to Source Pool contacts.
 - **Metrics for Success**: ≥90% of messages categorised correctly without intervention; ≥45 minutes saved per agent per day; ≥4.5/5 average agent satisfaction with AI-generated drafts.
 
-### 4.9 Documents Control (Invoices & Records)
+### 4.9 Email Classification and Tagging Workspace
+- **Feature Overview**: Provide a dedicated workspace that classifies inbound and outbound emails, applies smart tags, and surfaces follow-up flags so agents can triage high-volume inboxes without leaving the platform.
+- **Core Functionality**: Auto-label messages by property, tenant, urgency, compliance risk, and required action; cluster related threads; allow bulk tag edits; trigger reminders for unacknowledged priority emails.
+- **Goals / Benefits**: Prevent missed communications, accelerate routing to the right workflows, and give managers visibility into inbox load and compliance-sensitive conversations.
+- **User Flow**: Email ingested via connected mailbox → AI assigns categories/tags and highlights suggested actions → agent reviews, confirms, or adjusts tags → message syncs back to issue/work order records with audit trail.
+- **Technical Notes**: Use transformer-based classifiers fine-tuned on historic agency emails; maintain tag taxonomy aligned with issue and compliance schemas; expose tagging API for downstream analytics; enforce permission-aware views for sensitive labels.
+- **Metrics for Success**: ≥92% precision/recall on priority tagging; 50% reduction in time spent manually sorting inboxes; zero missed compliance escalation emails within SLA.
+
+### 4.10 Documents Control (Invoices & Records)
 - **Feature Overview**: Centralise management of invoices, receipts, quotes, and contracts linked to properties, jobs, and compliance obligations.
 - **Core Functionality**: Support upload from desktop/mobile, smart tagging by property/job/vendor, approval routing, version tracking, and granular access controls for agents, owners, and tenants.
 - **User Flow**: Agent uploads document → applies tags or accepts AI-suggested metadata → selects approval path → reviewers approve/annotate → final version attaches to property/job record and becomes searchable.
 - **Technical Notes**: Store objects in encrypted document repository (S3-compatible) with metadata in relational DB; leverage OCR for text extraction; enforce RBAC policies and audit logs; integrate with e-signature providers when needed.
 - **Metrics for Success**: ≥95% of documents tagged accurately; average document approval turnaround reduced by 40%; zero unauthorised document access incidents.
 
-### 4.10 Inspection Manager
+### 4.11 Inspection Manager
 - **Feature Overview**: Maintain a live schedule of inspections with assigned agents or contractors, ensuring timely execution and reporting.
 - **Core Functionality**: Create inspection events, assign personnel, attach checklists/templates, trigger reminders, and capture outcomes via mobile or desktop.
 - **User Flow**: Property flagged for inspection → agent schedules date/time → assignee receives calendar invite and reminder → inspection completed using template → report and photos uploaded → stakeholders notified.
 - **Technical Notes**: Sync with calendar APIs (Google/Microsoft); provide offline-capable mobile interface; store inspection templates and outcomes in structured schema; integrate push/SMS reminders.
 - **Metrics for Success**: ≥90% of inspections completed on schedule; inspection report submission time reduced by 50%; ≥4.5/5 satisfaction from agents using mobile workflow.
 
-### 4.11 Rent & Cashflow
+### 4.12 Rent & Cashflow
 - **Feature Overview**: Automate rent communications, track inflows/outflows, and surface cashflow insights for properties and owners.
 - **Core Functionality**: Send rent reminders and receipts, monitor overdue balances, publish dashboards showing monthly cashflow, and support CSV exports for accounting.
 - **User Flow**: Rent schedule ingested → system issues reminders ahead of due dates → payments reconciled → overdue accounts flagged → receipts auto-generated → owners view cashflow dashboard and export data.
 - **Technical Notes**: Integrate with payment gateways/banking feeds where available; maintain ledger tables for rent/expense transactions; generate PDFs via templating service; expose webhooks for accounting sync.
 - **Metrics for Success**: ≥80% of tenants receive automated reminders; overdue rent reduced by 25%; monthly cashflow dashboards accessed by ≥70% of owners.
 
-### 4.12 Knowledge Base (Law & Policy RAG System)
+### 4.13 Knowledge Base (Law & Policy RAG System)
 - **Feature Overview**: Provide AI-assisted answers grounded in property law, compliance rules, and internal policies via retrieval-augmented generation.
 - **Core Functionality**: Allow natural-language queries, retrieve relevant legal/policy documents, and deliver AI responses with citations and confidence indicators.
 - **User Flow**: User asks compliance question → RAG retrieves supporting passages → AI drafts answer with cited sources → user reviews, bookmarks, or escalates for legal confirmation if needed.
 - **Technical Notes**: Curate legal corpus with metadata (jurisdiction, topic, effective dates); ingest via document pipeline; use vector search plus hybrid keyword filters; enforce human-in-loop for low-confidence responses.
 - **Metrics for Success**: ≥95% citation accuracy; ≥60% of compliance queries resolved without escalation; average time to answer regulatory questions reduced by 50%.
 
-### 4.13 AI Intake Ops (Urgency-Based Reordering)
+### 4.14 AI Intake Ops (Urgency-Based Reordering)
 - **Feature Overview**: Automatically prioritise incoming maintenance and tenant requests based on urgency to focus agent attention on critical work.
 - **Core Functionality**: Analyse message content for urgency cues, assign priority levels, reorder queues in the operations dashboard, and allow manual overrides.
 - **User Flow**: Message ingested → NLP scores urgency and sentiment → task queued with visual indicator (high/medium/low) → agent reviews, optionally overrides, and actioned item moves forward in workflow.
